@@ -43,7 +43,6 @@ class SupabaseProductsAPI(ProductsAPI):
                     colour=item['glove_colour'],
                     model=item['glove_model'],
                     pattern=item['glove_pattern'],
-                    gemStone=item['gem_stone'],
                     gemColour=item['gem_colour'],
                     gemOpacity=item['gem_opacity'],
                     strassColour=item['gem_opacity'],

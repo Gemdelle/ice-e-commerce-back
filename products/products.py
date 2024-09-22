@@ -35,14 +35,13 @@ class Tight(Product):
         })
 
 class Glove(Product):
-    def __init__(self, type, previewUrl, colour, model, pattern, price, stock, gemStone, gemColour, gemOpacity, strassColour, strassQuantity):
+    def __init__(self, type, previewUrl, colour, model, pattern, price, stock, gemColour, gemOpacity, strassColour, strassQuantity):
         super().__init__(type, previewUrl)
         self.colour = colour
         self.model = model
         self.pattern = pattern
         self.price = price
         self.stock = stock
-        self.gemStone = gemStone
         self.gemColour = gemColour
         self.gemOpacity = gemOpacity
         self.strassColour = strassColour
@@ -57,7 +56,6 @@ class Glove(Product):
             "pattern": self.pattern,
             "price": self.price,
             "stock": self.stock,
-            "gem_stone": self.gemStone,
             "gem_colour": self.gemColour,
             "gem_opacity": self.gemOpacity,
             "strass_colour": self.strassColour,
