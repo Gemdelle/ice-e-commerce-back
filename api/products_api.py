@@ -6,6 +6,7 @@ from products.products import Tight, Glove
 SUPABASE_URL = 'https://cpgvtgbknlxmlqgorcby.supabase.co/'
 SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZ3Z0Z2Jrbmx4bWxxZ29yY2J5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjAwOTMyNiwiZXhwIjoyMDQxNTg1MzI2fQ.3_2xeZkbA9sc2DcLx57PSZMh8oFZPSO1KlCvsB6r-WE'
 
+
 class ProductsAPI(ABC):
     @abstractmethod
     def get_all_products(self):
@@ -14,17 +15,19 @@ class ProductsAPI(ABC):
 
 class SupabaseProductsAPI(ProductsAPI):
     def __init__(self, supabase: Client):
-        self.supabase = supabase
+        self._supabase = supabase
 
     def get_all_products(self):
         try:
-            tight_response = self.supabase.table('tight_view').select("*").execute()
-            glove_response = self.supabase.table('glove_view').select("*").execute()
+            tight_response = self._supabase.table('tight_view').select("*").execute()
+            glove_response = self._supabase.table('glove_view').select("*").execute()
             products = []
-
+            print(f"tight_response: {tight_response}")
+            print(f"glove_response: {glove_response}")
             for item in tight_response.data:
                 product = Tight(
                     type="TIGHT",
+                    id=item['tight_id'],
                     previewUrl=item['tight_preview_url'],
                     size=item['tight_size'],
                     model=item['tight_model'],
@@ -39,6 +42,7 @@ class SupabaseProductsAPI(ProductsAPI):
             for item in glove_response.data:
                 product = Glove(
                     type="GLOVE",
+                    id=item['glove_id'],
                     previewUrl=item['glove_preview_url'],
                     colour=item['glove_colour'],
                     model=item['glove_model'],
