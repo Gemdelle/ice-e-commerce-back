@@ -35,6 +35,7 @@ class Tight(Product):
 
     def toJson(self):
         return jsonify({
+            "id": self._id,
             "type": self._type,
             "previewUrl": self._previewUrl,
             "size": self._size,
@@ -66,6 +67,7 @@ class Glove(Product):
 
     def toJson(self):
         return jsonify({
+            "id": self._id,
             "type": self._type,
             "previewUrl": self._previewUrl,
             "colour": self._colour,
