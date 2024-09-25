@@ -1,5 +1,10 @@
+"""
+Este módulo contiene los productos que se comercializan, junto con la clase abstracta de la que heredan: Product().
+"""
+
 from abc import ABC, abstractmethod
 from flask import jsonify
+
 
 class Product(ABC):
     """
@@ -38,7 +43,7 @@ class Product(ABC):
         return self._price
 
     @abstractmethod
-    def toJson(self):
+    def to_json(self):
         """
         Método abstracto que debe ser implementado en las subclases para devolver el producto en formato JSON.
         """
@@ -71,7 +76,7 @@ class Tight(Product):
         self._strassColour = strassColour
         self._strassQuantity = strassQuantity
 
-    def toJson(self):
+    def to_json(self):
         """
         Devuelve los atributos de la prenda ajustada en formato JSON.
 
@@ -121,7 +126,7 @@ class Glove(Product):
         self._strassColour = strassColour
         self._strassQuantity = strassQuantity
 
-    def toJson(self):
+    def to_json(self):
         """
         Devuelve los atributos del guante en formato JSON.
 

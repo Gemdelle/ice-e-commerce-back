@@ -6,6 +6,7 @@ from typing import List
 from cart.cart_product import CartProduct
 from products.products import Product
 
+
 class Cart:
     """
     Clase que contiene una lista de CartProduct.

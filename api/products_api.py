@@ -1,10 +1,11 @@
 """
-Este módulo contiene la clase abstracta ProductsAPI(ABC) y su implementación en la clase SupabaseProductsAPI.
+Este módulo contiene la clase abstracta ProductsAPI(ABC) y su implementación en la clase SupabaseProductsAPI, establece
+la conexión entre el back-end y la base de datos.
 """
 
 from supabase import create_client, Client
 from abc import ABC, abstractmethod
-from products.products import Tight, Glove
+from products.products import Tight, Glove, Product
 
 # Variables que almacenan las credenciales de acceso a la base de datos en Supabase.
 SUPABASE_URL = 'https://cpgvtgbknlxmlqgorcby.supabase.co/'
@@ -19,7 +20,7 @@ class ProductsAPI(ABC):
     """
 
     @abstractmethod
-    def get_all_products(self):
+    def get_all_products(self) -> [Product]:
         """
         Método abstracto que obtiene todos los productos de la API.
 
@@ -40,7 +41,7 @@ class SupabaseProductsAPI(ProductsAPI):
     def __init__(self, supabase: Client):
         self._supabase = supabase
 
-    def get_all_products(self):
+    def get_all_products(self) -> [Product]:
         """
         Obtiene todos los productos de las vistas 'tight_view' y 'glove_view' en la base de datos Supabase.
 

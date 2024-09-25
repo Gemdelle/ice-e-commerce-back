@@ -4,6 +4,7 @@ Este módulo contiene la clase CartProduct, que representa un producto dentro de
 
 from products.products import Product
 
+
 class CartProduct:
     """
     Clase que representa un producto en el carrito de compras (Cart).
