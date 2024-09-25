@@ -1,19 +1,38 @@
+"""
+Este módulo contiene la clase abstracta ProductsAPI(ABC) y su implementacion en la clase SupabaseProductsAPI.
+"""
 from supabase import create_client, Client
 from abc import ABC, abstractmethod
-
 from products.products import Tight, Glove
 
+"""
+Variables que almacenan las credenciales de acceso a la DDBB en Supabase.
+"""
 SUPABASE_URL = 'https://cpgvtgbknlxmlqgorcby.supabase.co/'
-SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZ3Z0Z2Jrbmx4bWxxZ29yY2J5Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjAwOTMyNiwiZXhwIjoyMDQxNTg1MzI2fQ.3_2xeZkbA9sc2DcLx57PSZMh8oFZPSO1KlCvsB6r-WE'
+SUPABASE_KEY = ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZ3Z0Z2Jrbmx4bWxxZ29yY2J5Iiwi'
+                'cm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjAwOTMyNiwiZXhwIjoyMDQxNTg1MzI2fQ.3_2xeZkbA9sc2DcLx57PSZMh8oF'
+                'ZPSO1KlCvsB6r-WE')
 
 
 class ProductsAPI(ABC):
+    """
+    Clase abstracta definida para consumir informacion de una API.
+    """
     @abstractmethod
     def get_all_products(self):
+        """
+        Método abstracto que obtiene todos los productos de la API.
+        Parámetros:
+        Retorno:
+        """
         pass
 
 
 class SupabaseProductsAPI(ProductsAPI):
+    """
+    Clase que hereda de ProductsAPI para obtener los datos de una
+    película desde una API.
+    """
     def __init__(self, supabase: Client):
         self._supabase = supabase
 
@@ -62,6 +81,7 @@ class SupabaseProductsAPI(ProductsAPI):
         except Exception as e:
             print(f"Error fetching products: {e}")
             return None
+
 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 product_api = SupabaseProductsAPI(supabase)
