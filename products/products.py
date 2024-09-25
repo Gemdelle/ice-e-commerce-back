@@ -11,10 +11,10 @@ class Product(ABC):
         previewUrl (str): URL de vista previa del producto.
         price (float): Precio del producto.
     """
-    def __init__(self, id, type, previewUrl, price):
+    def __init__(self, id, type, preview_url, price):
         self._id = id
         self._type = type
-        self._previewUrl = previewUrl
+        self._preview_url = preview_url
         self._price = price
 
     @property
@@ -61,8 +61,8 @@ class Tight(Product):
         strassColour (str): Color de las piedras (strass).
         strassQuantity (int): Cantidad de piedras (strass).
     """
-    def __init__(self, id, type, previewUrl, size, model, pattern, price, stock, strassColour, strassQuantity):
-        super().__init__(id, type, previewUrl, price)
+    def __init__(self, id, type, preview_url, size, model, pattern, price, stock, strassColour, strassQuantity):
+        super().__init__(id, type, preview_url, price)
         print(f"price: {price}")
         self._size = size
         self._model = model
@@ -81,7 +81,7 @@ class Tight(Product):
         return jsonify({
             "id": self._id,
             "type": self._type,
-            "previewUrl": self._previewUrl,
+            "previewUrl": self._preview_url,
             "size": self._size,
             "model": self._model,
             "pattern": self._pattern,
@@ -110,8 +110,8 @@ class Glove(Product):
         strassColour (str): Color de las piedras (strass).
         strassQuantity (int): Cantidad de piedras (strass).
     """
-    def __init__(self, id, type, previewUrl, colour, model, pattern, price, stock, gemColour, gemOpacity, strassColour, strassQuantity):
-        super().__init__(id, type, previewUrl, price)
+    def __init__(self, id, type, preview_url, colour, model, pattern, price, stock, gemColour, gemOpacity, strassColour, strassQuantity):
+        super().__init__(id, type, preview_url, price)
         self._colour = colour
         self._model = model
         self._pattern = pattern
@@ -131,7 +131,7 @@ class Glove(Product):
         return jsonify({
             "id": self._id,
             "type": self._type,
-            "previewUrl": self._previewUrl,
+            "previewUrl": self._preview_url,
             "colour": self._colour,
             "model": self._model,
             "pattern": self._pattern,

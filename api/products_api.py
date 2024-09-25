@@ -32,6 +32,9 @@ class ProductsAPI(ABC):
 class SupabaseProductsAPI(ProductsAPI):
     """
     Clase que hereda de ProductsAPI para obtener los datos de productos desde una API Supabase.
+
+    Argumentos:
+        supabase (Client): Cliente de Supabase para hacer queries a la base de datos.
     """
 
     def __init__(self, supabase: Client):
@@ -53,7 +56,7 @@ class SupabaseProductsAPI(ProductsAPI):
                 product = Tight(
                     type="TIGHT",
                     id=item['tight_id'],
-                    previewUrl=item['tight_preview_url'],
+                    preview_url=item['tight_preview_url'],
                     size=item['tight_size'],
                     model=item['tight_model'],
                     pattern=item['tight_pattern'],
@@ -68,7 +71,7 @@ class SupabaseProductsAPI(ProductsAPI):
                 product = Glove(
                     type="GLOVE",
                     id=item['glove_id'],
-                    previewUrl=item['glove_preview_url'],
+                    preview_url=item['glove_preview_url'],
                     colour=item['glove_colour'],
                     model=item['glove_model'],
                     pattern=item['glove_pattern'],
