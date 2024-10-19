@@ -16,11 +16,6 @@ CORS(app)
 cart = Cart()
 
 
-@app.route('/', methods=['GET'])
-def home():
-    return "Welcome to the Flask API"
-
-
 @app.route('/api/products', methods=['GET'])
 def get_products():
     """
@@ -134,4 +129,4 @@ def find_product_by_id(product_id: int) -> Product:
 
 
 if __name__ == '__main__':
-    app.run(port=5000)
+    app.run(port=3000)
