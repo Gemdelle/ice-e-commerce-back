@@ -115,16 +115,14 @@ class Glove(Product):
         strassColour (str): Color de las piedras (strass).
         strassQuantity (int): Cantidad de piedras (strass).
     """
-    def __init__(self, id, type, preview_url, colour, model, pattern, price, stock, gemColour, gemOpacity, strassColour, strassQuantity):
+    def __init__(self, id, type, preview_url, colour, model, pattern, price, colour_code, pattern_elements, default_colour_code):
         super().__init__(id, type, preview_url, price)
         self._colour = colour
         self._model = model
         self._pattern = pattern
-        self._stock = stock
-        self._gemColour = gemColour
-        self._gemOpacity = gemOpacity
-        self._strassColour = strassColour
-        self._strassQuantity = strassQuantity
+        self._colour_code = colour_code
+        self._pattern_elements = pattern_elements
+        self._default_colour_code = default_colour_code
 
     def to_json(self):
         """
@@ -141,9 +139,7 @@ class Glove(Product):
             "model": self._model,
             "pattern": self._pattern,
             "price": self._price,
-            "stock": self._stock,
-            "gem_colour": self._gemColour,
-            "gem_opacity": self._gemOpacity,
-            "strass_colour": self._strassColour,
-            "strass_quantity": self._strassQuantity,
+            "colour_code": self._colour_code,
+            "pattern_elements": self._pattern_elements,
+            "default_colour_code": self._default_colour_code,
         })

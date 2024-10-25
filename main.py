@@ -129,4 +129,4 @@ def find_product_by_id(product_id: int) -> Product:
 
 
 if __name__ == '__main__':
-    app.run(port=3000)
+    app.run(port=5000)

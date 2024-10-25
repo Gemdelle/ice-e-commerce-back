@@ -50,7 +50,7 @@ class SupabaseProductsAPI(ProductsAPI):
         """
         try:
             tight_response = self._supabase.table('tight_view').select("*").execute()
-            glove_response = self._supabase.table('glove_view').select("*").execute()
+            glove_response = self._supabase.table('view_glove').select("*").execute()
             products = []
 
             for item in tight_response.data:
@@ -74,14 +74,12 @@ class SupabaseProductsAPI(ProductsAPI):
                     id=item['glove_id'],
                     preview_url=item['glove_preview_url'],
                     colour=item['glove_colour'],
+                    colour_code=item['glove_colour_code'],
                     model=item['glove_model'],
                     pattern=item['glove_pattern'],
-                    gemColour=item['gem_colour'],
-                    gemOpacity=item['gem_opacity'],
-                    strassColour=item['strass_colour'],
-                    strassQuantity=item['strass_quantity'],
                     price=item['glove_price'],
-                    stock=item['glove_stock']
+                    pattern_elements=item['glove_pattern_elements'],
+                    default_colour_code=item['default_glove_colour_code'],
                 )
                 products.append(product)
 
