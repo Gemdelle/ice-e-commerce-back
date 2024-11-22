@@ -1,8 +1,7 @@
 """
 Este módulo contiene la clase CartProduct, que representa un producto dentro del carrito de compras.
 """
-
-from products.products import Product
+from products.product import Product
 
 
 class CartProduct:

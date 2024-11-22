@@ -4,7 +4,7 @@ Este módulo contiene la clase Cart, que representa un carrito de compras con un
 
 from typing import List
 from cart.cart_product import CartProduct
-from products.products import Product
+from products.product import Product
 
 
 class Cart:

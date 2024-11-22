@@ -5,10 +5,10 @@ Este módulo contiene todos los endpoints disponibles para ser consumidos desde 
 from flask import Flask, jsonify, request
 from flask_cors import CORS
 
-from api.products_api import product_api
+from api.supabase_products_api import product_api
 from cart.cart import Cart
 from errors.no_data_found_error import NoDataFoundError
-from products.products import Product
+from products.product import Product
 
 # Inicializa la aplicación Flask y habilita el soporte para CORS
 app = Flask(__name__)
