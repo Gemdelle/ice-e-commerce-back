@@ -10,12 +10,7 @@ from api.products_api import ProductsAPI
 from products.glove import Glove
 from products.product import Product
 from products.tight import Tight
-
-# Variables que almacenan las credenciales de acceso a la base de datos en Supabase.
-SUPABASE_URL = 'https://cpgvtgbknlxmlqgorcby.supabase.co/'
-SUPABASE_KEY = ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNwZ3Z0Z2Jrbmx4bWxxZ29yY2J5Iiwi'
-                'cm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTcyNjAwOTMyNiwiZXhwIjoyMDQxNTg1MzI2fQ.3_2xeZkbA9sc2DcLx57PSZMh8oF'
-                'ZPSO1KlCvsB6r-WE')
+from api.keys import SUPABASE_KEY, SUPABASE_URL
 
 
 class SupabaseProductsAPI(ProductsAPI):
@@ -37,7 +32,7 @@ class SupabaseProductsAPI(ProductsAPI):
             List: Lista de productos (Tight y Glove) ordenados por precio.
         """
         try:
-            tight_response = self._supabase.table('tight_view').select("*").execute()
+            tight_response = self._supabase.table('tight_view').select("*").execute() # Queries a supabase
             glove_response = self._supabase.table('view_glove').select("*").execute()
             products = []
 
@@ -73,7 +68,7 @@ class SupabaseProductsAPI(ProductsAPI):
 
             products.sort(key=lambda x: x.price)
 
-            return products
+            return products # Todos los guantes y medias ordenados por precio de menor a mayor
         except Exception as e:
             print(f"Error fetching products: {e}")
             return None
@@ -81,4 +76,4 @@ class SupabaseProductsAPI(ProductsAPI):
 
 # Inicializa el cliente de Supabase y la API de productos
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-product_api = SupabaseProductsAPI(supabase)
+product_api: SupabaseProductsAPI = SupabaseProductsAPI(supabase)
